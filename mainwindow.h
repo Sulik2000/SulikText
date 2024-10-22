@@ -8,6 +8,7 @@
 #include <QFileDialog>
 #include <QTextEdit>
 #include <QMessageBox>
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -29,7 +30,17 @@ private slots:
 
     void on_actionSave_file_triggered();
 
+    void on_actionOpen_folder_triggered();
+
+    void on_actionClose_folder_triggered();
+
+    void on_actionClose_file_triggered();
+
+    void on_TextEdit_change();
+    void closeFileImmediately();
+    void saveAndCloseFile();
 private:
+    void saveFile();
     Ui::MainWindow *ui;
     QFileSystemModel* _folderModel;
 };
