@@ -10,6 +10,10 @@
 #include <QMessageBox>
 #include <QLabel>
 
+#include "ContextMenu/dircontextmenu.h"
+#include "ContextMenu/filecontextmenu.h"
+#include "ContextMenu/filedialog.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -37,10 +41,24 @@ private slots:
     void on_actionClose_file_triggered();
 
     void on_TextEdit_change();
+
+    void on_treeView_customContextMenuRequested(const QPoint &pos);
+
+    void saveFile();
+    void OpenFile(QString path);
+    void OpenFile(QModelIndex index);
     void closeFileImmediately();
     void saveAndCloseFile();
+    void DeleteFile(QString path);
+    void RenameFile(QString path);
+    void SetNewFileName(QString path, QString NewFileName);
+    void AddNewFile(QString path);
+    void AddNewFile(QString path, QString fileName);
+    void RemoveFolder(QString path);
+    void AddFolder(QString path);
+    void AddNewFolder(QString path, QString dirName);
 private:
-    void saveFile();
+    bool _isFileInDir(QString dirPath, QString filePath) const;
     Ui::MainWindow *ui;
     QFileSystemModel* _folderModel;
 };
