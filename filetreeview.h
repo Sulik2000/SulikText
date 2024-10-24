@@ -13,6 +13,7 @@ protected:
     virtual void mouseDoubleClickEvent(QMouseEvent *event) override;
 signals:
     void OpenFile(QModelIndex index);
+    void ContextMenuRootDir(QPoint pos);
 public:
     FileTreeView(QWidget* parent = nullptr);
 };

@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->treeView->hide();
     connect(ui->treeView, SIGNAL(OpenFile(QModelIndex)), this, SLOT(OpenFile(QModelIndex)));
+    connect(ui->treeView, SIGNAL(ContextMenuRootDir(QPoint)), this, SLOT(ContextMenuRootDir(QPoint)));
 }
 
 MainWindow::~MainWindow()
@@ -51,7 +52,7 @@ void MainWindow::on_actionOpen_folder_triggered()
     _folderModel = new QFileSystemModel();
     // Setup treeview
     ui->treeView->setModel(_folderModel);
-    ui->treeView->setRootIndex(_folderModel->setRootPath(dir.absolutePath()));
+    ui->treeView->setRootIndex(_folderModel->setRootPath(dirLoc));
     ui->treeView->hideColumn(1);
     ui->treeView->hideColumn(2);
     ui->treeView->hideColumn(3);
@@ -215,6 +216,16 @@ void MainWindow::AddNewFolder(QString path, QString dirName)
         connect(msg, SIGNAL(accepted()), msg, SLOT(close()));
         msg->exec();
     }
+}
+
+void MainWindow::ContextMenuRootDir(QPoint pos)
+{
+    QString dirPath = _folderModel->filePath(ui->treeView->rootIndex());
+    DirContextMenu* menu = new DirContextMenu(dirPath, this);
+    connect(menu, SIGNAL(AddNewFile(QString)), this, SLOT(AddNewFile(QString)));
+    connect(menu, SIGNAL(RemoveFolder(QString)), this, SLOT(RemoveFolder(QString)));
+    connect(menu, SIGNAL(AddNewFolder(QString)), this, SLOT(AddFolder(QString)));
+    menu->exec(QCursor::pos());
 }
 
 bool MainWindow::_isFileInDir(QString dirPath, QString filePath) const

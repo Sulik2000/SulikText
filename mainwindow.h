@@ -13,6 +13,7 @@
 #include "ContextMenu/dircontextmenu.h"
 #include "ContextMenu/filecontextmenu.h"
 #include "ContextMenu/filedialog.h"
+#include "filefilterproxymodel.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -57,6 +58,7 @@ private slots:
     void RemoveFolder(QString path);
     void AddFolder(QString path);
     void AddNewFolder(QString path, QString dirName);
+    void ContextMenuRootDir(QPoint pos);
 private:
     bool _isFileInDir(QString dirPath, QString filePath) const;
     Ui::MainWindow *ui;
