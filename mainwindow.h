@@ -13,10 +13,8 @@
 #include "ContextMenu/dircontextmenu.h"
 #include "ContextMenu/filecontextmenu.h"
 #include "ContextMenu/filedialog.h"
-<<<<<<< HEAD
-=======
+
 #include "optionwindow.h"
->>>>>>> develop
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
