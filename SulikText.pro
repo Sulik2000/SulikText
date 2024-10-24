@@ -14,20 +14,26 @@ SOURCES += \
     ContextMenu/filedialog.cpp \
     filetreeview.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    optionwindow.cpp
 
 HEADERS += \
     ContextMenu/dircontextmenu.h \
     ContextMenu/filecontextmenu.h \
     ContextMenu/filedialog.h \
     filetreeview.h \
-    mainwindow.h
+    mainwindow.h \
+    optionwindow.h
 
 FORMS += \
     ContextMenu/filedialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    optionwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc

@@ -1,0 +1,42 @@
+{
+    "styles" : [
+        {
+            "Name" : "Dark",
+            "TextEdit" : {
+                    "background-color" : "#022419",
+                    "text-color" : "#95baae",
+                    "border-color" : "#656666"
+            },
+            "MainWindow" : {
+                    "background-color" : "#1e3324"
+            },
+            "MessageBox" : {
+                    "background-color" : "#0d0408",
+                    "text-color" : "#cf93ae",
+                    "button-color" : "#8c4364",
+                    "button-text-color" : "#d9a5bc"
+            }
+        },
+
+        {
+            "Name" : "Light",
+            "TextEdit" : {
+                    "background-color" : "#d5f5f1",
+                    "text-color" : "#363334",
+                    "border-color" : "#3a3b3b"
+            },
+            "MainWindow" : {
+                    "background-color" : "#f0f2f2"
+            },
+            "MessageBox" : {
+                    "background-color" : "#bdb9ba",
+                    "text-color" : "#333333",
+                    "button-color" : "#c9b5b5",
+                    "button-text-color" : "#3d383a"
+            }
+        }
+    ],
+
+
+    "SelectedStyle" : "Light"
+}
