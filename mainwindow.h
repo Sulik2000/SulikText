@@ -13,6 +13,10 @@
 #include "ContextMenu/dircontextmenu.h"
 #include "ContextMenu/filecontextmenu.h"
 #include "ContextMenu/filedialog.h"
+<<<<<<< HEAD
+=======
+#include "optionwindow.h"
+>>>>>>> develop
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -58,9 +62,12 @@ private slots:
     void AddFolder(QString path);
     void AddNewFolder(QString path, QString dirName);
     void ContextMenuRootDir(QPoint pos);
+    void on_actionOptions_triggered();
+    void SetStyle(QJsonObject applyingStyle);
 private:
     bool _isFileInDir(QString dirPath, QString filePath) const;
     Ui::MainWindow *ui;
-    QFileSystemModel* _folderModel;
+    QFileSystemModel* _folderModel = nullptr;
+    OptionWindow *optionWindow = nullptr;
 };
 #endif // MAINWINDOW_H

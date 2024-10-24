@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>SulikText</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
@@ -56,6 +59,7 @@
     <addaction name="actionClose_folder"/>
     <addaction name="actionClose_file"/>
     <addaction name="actionSave_file"/>
+    <addaction name="actionOptions"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -105,6 +109,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+S, Meta+S</string>
+   </property>
+  </action>
+  <action name="actionOptions">
+   <property name="text">
+    <string>Options</string>
    </property>
   </action>
  </widget>

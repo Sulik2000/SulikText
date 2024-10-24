@@ -9,6 +9,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->treeView->hide();
     connect(ui->treeView, SIGNAL(OpenFile(QModelIndex)), this, SLOT(OpenFile(QModelIndex)));
     connect(ui->treeView, SIGNAL(ContextMenuRootDir(QPoint)), this, SLOT(ContextMenuRootDir(QPoint)));
+    optionWindow = new OptionWindow(this);
+    SetStyle(optionWindow->getCurrentStyle());
+    connect(optionWindow, SIGNAL(ChangedStyle(QJsonObject)), this, SLOT(SetStyle(QJsonObject)));
 }
 
 MainWindow::~MainWindow()
@@ -369,5 +372,34 @@ void MainWindow::on_treeView_customContextMenuRequested(const QPoint &pos)
         connect(menu, SIGNAL(RenameFile(QString)), this, SLOT(RenameFile(QString)));
         menu->exec(QCursor::pos());
     }
+}
+
+
+void MainWindow::on_actionOptions_triggered()
+{
+    if(optionWindow){
+        optionWindow->show();
+        optionWindow->setFocus();
+        return;
+    }
+    optionWindow = new OptionWindow(this);
+    connect(optionWindow, SIGNAL(ChangedStyle(QJsonObject)), this, SLOT(SetStyle(QJsonObject)));
+    optionWindow->exec();
+}
+
+void MainWindow::SetStyle(QJsonObject applyingStyle)
+{
+    setStyleSheet("background-color: " + applyingStyle.value("MainWindow").toObject().value("background-color").toString());
+    ui->treeView->setStyleSheet("background-color: " +
+                                applyingStyle.value("TextEdit").toObject().value("background-color").toString() +
+                                ";\ncolor: " + applyingStyle.value("TextEdit").toObject().value("text-color").toString() +
+                                ";\nborder: 1px solid " +
+                                    applyingStyle.value("TextEdit").toObject().value("border-color").toString() + ';');
+
+    ui->tabWidget->setStyleSheet("background-color: " +
+                                 applyingStyle.value("TextEdit").toObject().value("background-color").toString() +
+                                 ";\ncolor: " + applyingStyle.value("TextEdit").toObject().value("text-color").toString() +
+                                 ";\nborder: 1px solid " +
+                                 applyingStyle.value("TextEdit").toObject().value("border-color").toString() + ';');
 }
 
