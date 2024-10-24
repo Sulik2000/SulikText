@@ -13,7 +13,6 @@
 #include "ContextMenu/dircontextmenu.h"
 #include "ContextMenu/filecontextmenu.h"
 #include "ContextMenu/filedialog.h"
-#include "filefilterproxymodel.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
